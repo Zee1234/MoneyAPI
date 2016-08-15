@@ -1,3 +1,6 @@
 [submodule "libs/ZPSI"]
 	path = libs/ZPSI
 	url = https://github.com/Zee1234/ZPSI
+[submodule "ZPSI"]
+	path = ZPSI
+	url = https://github.com/Zee1234/ZPSI

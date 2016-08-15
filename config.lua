@@ -1,4 +1,4 @@
-local ZPSI = dofile(cPluginManager:GetCurrentPlugin():GetLocalFolder() .. "/libs/ZPSI/ZPSI.lua")
+local ZPSI = dofile(cPluginManager:GetCurrentPlugin():GetLocalFolder() .. "/ZPSI/ZPSI.lua")
 
 g_Config = ZPSI.parse(cPluginManager:GetCurrentPlugin():GetLocalFolder() .. "/config.zpsi").Config
 
