@@ -1,4 +1,4 @@
-cProvider = {}
+local cProvider = {}
 cProvider.__index = cProvider
 
 function cProvider:new(a_plugin)
@@ -6,9 +6,15 @@ function cProvider:new(a_plugin)
   local obj = {}
   setmetatable(obj,cProvider)
   
+  obj.name = a_plugin
   
+  
+  return obj
 end
 
+function cProvider:getName()
+  return self.Name
+end
 
 
 
