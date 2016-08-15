@@ -16,7 +16,7 @@ Config:
 ---: WorldB
 ---: WorldC
 
-#This should be "True" if you want the plugins listed above to
+# This should be "True" if you want the plugins listed above
 # to be the only plugins that work in their corresponding worlds. "False" otherwise.
 -StrictWorlds: True
 
