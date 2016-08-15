@@ -2,7 +2,7 @@ local cMyWorld = {}
 cMyWorld.__index = cMyWorld
 
 function cMyWorld:new(a_world)
-  assert(type(a_world) == "table" and type(a_world) == "string","cMyWorld:new() recieved a non-string, non-table value for a_world!")
+  assert(type(a_world) == "table" or type(a_world) == "string","cMyWorld:new() recieved a non-string, non-table value for a_world!")
   if type(a_world) == "string" and not cRoot:Get():GetWorld(a_world) then LOGERROR("Non-Fatal error: Non-Existant world exists in MoneyAPI Config!") end
   local obj = {}
   setmetatable(obj,cMyWorld)
