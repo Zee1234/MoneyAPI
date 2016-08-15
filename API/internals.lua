@@ -1,6 +1,5 @@
 function providerCaller(a_user,a_world,a_function,...)
   local called = {}
-  local returned = {}
   
   if g_Config.UseForcedRelations then
     for _,v in ipairs(g_Users[a_user]:getForcedList()) do
@@ -8,9 +7,7 @@ function providerCaller(a_user,a_world,a_function,...)
         if not g_Providers[v] then LOGERROR("Configured Provider \""..v.."\" is not registered! Please fix MoneyAPI's Config or enable the missing provider!") break end
         if called[v] then break end
         
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v] = ret
+        called[v] = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
@@ -21,9 +18,7 @@ function providerCaller(a_user,a_world,a_function,...)
         if not g_Providers[v] then LOGERROR("Configured Provider \""..v.."\" is not registered! Please fix MoneyAPI's Config or enable the missing provider!") break end
         if called[v] then break end
         
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v] = ret
+        called[v] = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
@@ -33,20 +28,17 @@ function providerCaller(a_user,a_world,a_function,...)
       repeat
         if called[v:getName()] then break end
         
-        local ret = cPluginManager:CallPlugin(v:getName(),"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v:getName()] = ret
+        called[v:getName()] = cPluginManager:CallPlugin(v:getName(),"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
   
-  return returned, called
+  return called, returned
 end
 
 
 function bankProviderCaller(a_user,a_world,a_function,...)
   local called = {}
-  local returned = {}
   
   if g_Config.UseForcedRelations then
     for _,v in ipairs(g_Users[a_user]:getForcedList()) do
@@ -55,9 +47,7 @@ function bankProviderCaller(a_user,a_world,a_function,...)
         if called[v] then break end
         if not g_Providers[v]:hasBank() then break end
         
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v] = ret
+        called[v] = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
@@ -69,9 +59,7 @@ function bankProviderCaller(a_user,a_world,a_function,...)
         if called[v] then break end
         if not g_Providers[v]:hasBank() then break end
         
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v] = ret
+        called[v] = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
@@ -81,12 +69,11 @@ function bankProviderCaller(a_user,a_world,a_function,...)
       repeat
         if called[v] then break end
         if not g_Providers[v]:hasBank() then break end
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
-        table.insert(returned,ret)
-        called[v] = ret
+        
+        called[v] = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
       until true
     end
   end
   
-  return returned, called
+  return called
 end
