@@ -17,6 +17,8 @@ function cUser:new(a_plugin)
     else
       table.insert(obj.forcedUsage,g_Config.ForcedUsages[a_plugin])
     end
+  else
+    obj.forcedUsage = false
   end
   
   
@@ -24,8 +26,7 @@ function cUser:new(a_plugin)
 end
 
 function cUser:getForcedList()
-  if g_Config.UseForcedRelations then return self.forcedUsage end
-  return false
+  return self.forcedUsage
 end
 
 function cUser:getName()
