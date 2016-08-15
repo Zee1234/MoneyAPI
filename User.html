@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>user</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>user</code></h1>
+<p>Request name of currency from provider plugin(s).</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#CurrencyPlural">CurrencyPlural (a_plugin, a_world)</a></td>
+	<td class="summary">Request plural name of currency from provider plugin(s).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Format">Format (a_plugin, a_world, a_value)</a></td>
+	<td class="summary">Convert number into formatted currency string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetPlayers">GetPlayers (a_plugin, a_world)</a></td>
+	<td class="summary">Get Array of all registered players.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetBanks">GetBanks (a_plugin, a_world)</a></td>
+	<td class="summary">Get Array of all registered banks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetName">GetName (a_plugin, a_world)</a></td>
+	<td class="summary">Get provider plugin name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HasBankSupport">HasBankSupport (a_plugin, a_world)</a></td>
+	<td class="summary">Check if provider plugin has bank support.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HasFractionalDigits">HasFractionalDigits (a_plugin, a_world)</a></td>
+	<td class="summary">Check if provider plugin(s) use decimal places in currency.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsEnabled">IsEnabled (a_plugin, a_world)</a></td>
+	<td class="summary">Are any provider plugins available.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerBalance">PlayerBalance (a_plugin, a_world, a_player)</a></td>
+	<td class="summary">Get player balance.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerDeposit">PlayerDeposit (a_plugin, a_world, a_player, a_value)</a></td>
+	<td class="summary">Add currency to player account.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerWithdraw">PlayerWithdraw (a_plugin, a_world, a_player, a_value)</a></td>
+	<td class="summary">Remove currency from player account.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankBalance">BankBalance (a_plugin, a_world, a_bank, a_player)</a></td>
+	<td class="summary">Get bank balance of player (or bank total balance if no invidividual accounts).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankDeposit">BankDeposit (a_plugin, a_world, a_bank, a_player, a_value)</a></td>
+	<td class="summary">Add currency to bank balance of player (or bank total balance if no invidividual accounts).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankHasMember">BankHasMember (a_plugin, a_world, a_bank, a_player)</a></td>
+	<td class="summary">Check if named bank has identified player.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankMembers">BankMembers (a_plugin, a_world, a_bank)</a></td>
+	<td class="summary">Get array of members of named bank.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankOwner">BankOwner (a_plugin, a_world, a_bank)</a></td>
+	<td class="summary">Get Owner/Creator of named bank.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BanksWithMember">BanksWithMember (a_plugin, a_world, a_player)</a></td>
+	<td class="summary">Get array of banks of which identified player is a member.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#BankWithdraw">BankWithdraw (a_plugin, a_world, a_bank, a_player, a_value)</a></td>
+	<td class="summary">Withdraw from bank balance of player (or bank total balance if no invidividual accounts).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "CurrencyPlural"></a>
+    <strong>CurrencyPlural (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Request plural name of currency from provider plugin(s).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = name (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Format"></a>
+    <strong>Format (a_plugin, a_world, a_value)</strong>
+    </dt>
+    <dd>
+    Convert number into formatted currency string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_value</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = formatted_number (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetPlayers"></a>
+    <strong>GetPlayers (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Get Array of all registered players.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = Array of UUID (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetBanks"></a>
+    <strong>GetBanks (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Get Array of all registered banks.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = Array of name (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetName"></a>
+    <strong>GetName (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Get provider plugin name.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = provider_plugin (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HasBankSupport"></a>
+    <strong>HasBankSupport (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Check if provider plugin has bank support.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HasFractionalDigits"></a>
+    <strong>HasFractionalDigits (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Check if provider plugin(s) use decimal places in currency.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsEnabled"></a>
+    <strong>IsEnabled (a_plugin, a_world)</strong>
+    </dt>
+    <dd>
+    Are any provider plugins available.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerBalance"></a>
+    <strong>PlayerBalance (a_plugin, a_world, a_player)</strong>
+    </dt>
+    <dd>
+    Get player balance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID())
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = balance (number)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerDeposit"></a>
+    <strong>PlayerDeposit (a_plugin, a_world, a_player, a_value)</strong>
+    </dt>
+    <dd>
+    Add currency to player account.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID())
+        </li>
+        <li><span class="parameter">a_value</span>
+         amount (number)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool (successful/not successful)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerWithdraw"></a>
+    <strong>PlayerWithdraw (a_plugin, a_world, a_player, a_value)</strong>
+    </dt>
+    <dd>
+    Remove currency from player account.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID())
+        </li>
+        <li><span class="parameter">a_value</span>
+         amount (number)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool (successful/not successful)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankBalance"></a>
+    <strong>BankBalance (a_plugin, a_world, a_bank, a_player)</strong>
+    </dt>
+    <dd>
+    Get bank balance of player (or bank total balance if no invidividual accounts).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID()) -- Implementation specific
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = balance (number)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankDeposit"></a>
+    <strong>BankDeposit (a_plugin, a_world, a_bank, a_player, a_value)</strong>
+    </dt>
+    <dd>
+    Add currency to bank balance of player (or bank total balance if no invidividual accounts).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+        <li><span class="parameter">a_player</span>
+         amount (number)
+        </li>
+        <li><span class="parameter">a_value</span>
+         player UUID (string, cPlayer:GetUUID()) -- Implementation specific
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool (successful/not successful)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankHasMember"></a>
+    <strong>BankHasMember (a_plugin, a_world, a_bank, a_player)</strong>
+    </dt>
+    <dd>
+    Check if named bank has identified player.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID()) -- Implementation specific
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankMembers"></a>
+    <strong>BankMembers (a_plugin, a_world, a_bank)</strong>
+    </dt>
+    <dd>
+    Get array of members of named bank.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = Array of UUID (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankOwner"></a>
+    <strong>BankOwner (a_plugin, a_world, a_bank)</strong>
+    </dt>
+    <dd>
+    Get Owner/Creator of named bank.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = UUID (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BanksWithMember"></a>
+    <strong>BanksWithMember (a_plugin, a_world, a_player)</strong>
+    </dt>
+    <dd>
+    Get array of banks of which identified player is a member.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_player</span>
+         player UUID (string, cPlayer:GetUUID()) -- Implementation specific
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = Array of bank name (string)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "BankWithdraw"></a>
+    <strong>BankWithdraw (a_plugin, a_world, a_bank, a_player, a_value)</strong>
+    </dt>
+    <dd>
+    Withdraw from bank balance of player (or bank total balance if no invidividual accounts).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a_plugin</span>
+         plugin name (string)
+        </li>
+        <li><span class="parameter">a_world</span>
+         world name (string, cWorld:GetName())
+        </li>
+        <li><span class="parameter">a_bank</span>
+         bank name (string)
+        </li>
+        <li><span class="parameter">a_player</span>
+         amount (number)
+        </li>
+        <li><span class="parameter">a_value</span>
+         player UUID (string, cPlayer:GetUUID()) -- Implementation specific
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table of return values [provider_plugin] = bool (successful/not successful)
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-15 14:31:21 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
