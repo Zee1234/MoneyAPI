@@ -17,7 +17,7 @@ function cMyWorld:new(a_world)
         if v == obj.name then table.insert(obj.providers,k) end
       else
         for _,w in ipairs(v) do
-          if w == obj.name then table.insert(obj.providers,w) end
+          if w == obj.name then table.insert(obj.providers,k) end
         end
       end
     end
