@@ -1,5 +1,12 @@
---====================General API Calls
-
+--- Functions that user plugins can call that MoneyAPI will forward to provider plugins.
+-- Return values are formatted into tables like this:
+--- {
+---   ["providerPlugin1"] = [return value(s)],
+---   ["providerPlugin2"] = [return value(s)]
+--- }
+-- for any and all *valid* provider plugins.
+-- Provider plugins do not have to supply this formatting in their returns.
+-- Instead, supply only what comes after "[provider_plugin] =" in the "Returns:" section of each applicable function
 
 --- Request name of currency from provider plugin(s).
 --@param a_plugin plugin name (string)
@@ -76,7 +83,6 @@ end
 
 
 
---====================Player API Calls
 
 --- Get player balance.
 --@param a_plugin plugin name (string)
@@ -109,7 +115,6 @@ end
 
 
 
---====================Bank API Calls
 
 --- Get bank balance of player (or bank total balance if no invidividual accounts).
 --@param a_plugin plugin name (string)
