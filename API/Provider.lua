@@ -1,4 +1,9 @@
 --====================Registration Control
+
+
+-- Register a provider (currency) plugin.
+--@param a_plugin plugin name (string)
+--@return true if successful, false and an error string otherwise
 function RegisterProvider(a_plugin,a_bankSupport)
   assert(type(a_plugin) == "string","RegisterUser recieved non-string value!")
   if g_Providers[a_plugin] then return false, "Plugin name already registered" end
@@ -7,6 +12,10 @@ function RegisterProvider(a_plugin,a_bankSupport)
   return true
 end
 
+
+-- Unregister a provider (currency) plugin.
+--@param a_plugin plugin name (string)
+--@return true if successful, false and an error string otherwise
 function UnregisterProvider(a_plugin)
   assert(type(a_plugin) == "string","UnregisterProvider recieved non-string value!")
   if not g_Providers[a_plugin] then return false, "Plugin name already unregistered" end
