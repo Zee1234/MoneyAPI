@@ -1,7 +1,7 @@
 --====================Registration Control
 
 
--- Register a provider (currency) plugin.
+--- Register a provider (currency) plugin.
 --@param a_plugin plugin name (string)
 --@return true if successful, false and an error string otherwise
 function RegisterProvider(a_plugin,a_bankSupport)
@@ -13,7 +13,7 @@ function RegisterProvider(a_plugin,a_bankSupport)
 end
 
 
--- Unregister a provider (currency) plugin.
+--- Unregister a provider (currency) plugin.
 --@param a_plugin plugin name (string)
 --@return true if successful, false and an error string otherwise
 function UnregisterProvider(a_plugin)

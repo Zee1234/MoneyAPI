@@ -1,7 +1,7 @@
 --====================Registration API calls
 
 
--- Register a user (store) plugin.
+--- Register a user (store) plugin.
 --@param a_plugin plugin name (string)
 --@return true if successful, false and an error string otherwise
 function RegisterUser(a_plugin)
@@ -12,7 +12,7 @@ function RegisterUser(a_plugin)
   return true
 end
 
--- Unregister a user (store) plugin.
+--- Unregister a user (store) plugin.
 --@param a_plugin plugin name (string)
 --@return true if successful, false and an error string otherwise
 function UnregisterUser(a_plugin)
