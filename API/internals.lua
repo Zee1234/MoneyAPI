@@ -31,11 +31,11 @@ function providerCaller(a_user,a_world,a_function,...)
   if not g_Config.UseForcedRelations and not g_Config.UseWorldRestrictions then
     for _,v in pairs(g_Providers) do
       repeat
-        if called[v] then break end
+        if called[v:getName()] then break end
         
-        local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
+        local ret = cPluginManager:CallPlugin(v:getName(),"MoneyAPIProviderCallback",a_function,...)
         table.insert(returned,ret)
-        called[v] = ret
+        called[v:getName()] = ret
       until true
     end
   end
