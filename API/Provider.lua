@@ -1,10 +1,18 @@
 --====================Registration Control
-function RegisterProvider()
+function RegisterProvider(a_plugin,a_bankSupport)
+  assert(type(a_plugin) == "string","RegisterUser recieved non-string value!")
+  if g_Providers[a_plugin] then return false, "Plugin name already registered" end
   
+  g_Providers[a_plugin] = cProvider:new(a_plugin)
+  return true
 end
 
-function UnregisterProvider()
+function UnregisterProvider(a_plugin)
+  assert(type(a_plugin) == "string","UnregisterProvider recieved non-string value!")
+  if not g_Providers[a_plugin] then return false, "Plugin name already unregistered" end
   
+  g_Providers[a_plugin] = nil
+  return true
 end
 
 --[[
