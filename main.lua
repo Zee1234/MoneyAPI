@@ -1,6 +1,3 @@
-g_Plugin = nil --I know this does nothing, it's a note.
-
-
 function Initialize(a_Plugin)
   a_Plugin:SetName("MoneyAPI")
   a_Plugin:SetVersion(1.0)
@@ -15,6 +12,23 @@ function Initialize(a_Plugin)
     cPluginManager:AddHook(cPluginManager.HOOK_PLUGINS_LOADED, LDHSetup)
     cRoot:Get():GetDefaultWorld():ScheduleTask(1,LDHSetup)
   end
+  
+  
+  cRoot:Get():ForEachWorld(function(a_world) if not g_Worlds[a_world:GetName()] then g_Worlds[a_world:GetName()] = cMyWorld:new(a_world:GetName()) end end)
+  if g_Config.UseWorldRestrictions then
+    for _,v in pairs(g_Config.WorldRestrictions) do
+      if type(v) == "table" then
+        for _,w in ipairs(v) do
+          if not g_Worlds[w] then g_Worlds[w] = cMyWorld:new(w) end
+        end
+      else
+        if not g_Worlds[v] then g_Worlds[v] = cMyWorld:new(v) end
+      end
+    end
+  end
+  
+  
+  
 	
   g_Plugin = a_Plugin
   LOG("Initialized MoneyAPI v." .. a_Plugin:GetVersion())
@@ -35,7 +49,7 @@ end
 
 function LDHSetup()
   if not g_LDH then
-    print("Lib",cPluginManager:CallPlugin("LibDependHandler","RegisterLibrary","MoneyAPI"))
+    cPluginManager:CallPlugin("LibDependHandler","RegisterLibrary","MoneyAPI")
     g_LDH = true
   end
 end

@@ -2,25 +2,22 @@ local cMyWorld = {}
 cMyWorld.__index = cMyWorld
 
 function cMyWorld:new(a_world)
-  assert(type(a_world) == "table" or type(a_world) == "string","cMyWorld:new() recieved a non-string, non-table value for a_world!")
-  if type(a_world) == "string" and not cRoot:Get():GetWorld(a_world) then LOGERROR("Non-Fatal error: Non-Existant world exists in MoneyAPI Config!") end
+  assert(type(a_world) == "string","cMyWorld:new() recieved a non-string value for a_world!")
+  if type(a_world) == "string" and not cRoot:Get():GetWorld(a_world) then LOGERROR("Non-Fatal error: Non-Existant world \""..a_world.."\" exists in MoneyAPI Config!") end
   local obj = {}
   setmetatable(obj,cMyWorld)
   
-  if type(a_world) == table then
-    obj.name = a_world:GetName()
-  else
-    obj.name = a_world
-  end
+
+  obj.name = a_world
   
   if g_Config.UseWorldRestrictions then
     obj.providers = {}
     for k,v in pairs(g_Config.WorldRestrictions) do
-      if type(v) == "string" and v == obj.name then
-        table.insert(obj.providers,k)
+      if type(v) == "string" then
+        if v == obj.name then table.insert(obj.providers,k) end
       else
-        for _,w in ipairs(g_Config.WorldRestrictions[v]) do
-          if w == obj.name then table.insert(obj.providers,k) end
+        for _,w in ipairs(v) do
+          if w == obj.name then table.insert(obj.providers,w) end
         end
       end
     end
