@@ -14,39 +14,39 @@ end
 
 --====================General API Calls
 
-function CurrencyName()
+function CurrencyName(a_world)
   
 end
 
-function CurrencyPlural()
+function CurrencyPlural(a_world)
   
 end
 
-function Format()
+function Format(a_world,a_value)
   
 end
 
-function GetPlayers()
+function GetPlayers(a_world)
 
 end
 
-function GetBanks()
+function GetBanks(a_world)
   
 end
 
-function GetName()
+function GetName(a_world)
   
 end
 
-function HasBankSupport()
+function HasBankSupport(a_world)
   
 end
 
-function HasFractionalDigits()
+function HasFractionalDigits(a_world)
   
 end
 
-function IsEnabled()
+function IsEnabled(a_world)
   
 end
 
@@ -54,15 +54,15 @@ end
 
 --====================Player API Calls
 
-function PlayerBalance()
+function PlayerBalance(a_player,a_world)
   
 end
 
-function PlayerDeposit()
+function PlayerDeposit(a_player,a_world,a_value)
   
 end
 
-function PlayerWithdraw()
+function PlayerWithdraw(a_player,a_world,a_value)
   
 end
 
