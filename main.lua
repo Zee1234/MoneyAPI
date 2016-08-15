@@ -35,7 +35,7 @@ end
 
 function OnDisable()
   
-
+  cPluginManager:CallPlugin("LibDependHandler","UnregisterLibrary","MoneyAPI")
   
   
   LOG("MoneyAPI is disabled")
