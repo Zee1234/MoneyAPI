@@ -1,10 +1,18 @@
 --====================Registration Control
-function RegisterUser()
+function RegisterUser(a_plugin)
+  assert(type(a_plugin) == "string","RegisterUser recieved non-string value!")
+  if g_Users[a_plugin] then return false, "Plugin name already registered" end
   
+  g_Users[a_plugin] = cUser:new(a_plugin)
+  return true
 end
 
-function UnregisterUser()
+function UnregisterUser(a_plugin)
+  assert(type(a_plugin) == "string","UnregisterUser recieved non-string value!")
+  if not g_Users[a_plugin] then return false, "Plugin name already unregistered" end
   
+  g_Users[a_plugin] = nil
+  return true
 end
 
 
@@ -14,39 +22,39 @@ end
 
 --====================General API Calls
 
-function CurrencyName(a_world)
+function CurrencyName(a_plugin,a_world)
+  providerCaller(a_plugin,a_world,CurrencyName)
+end
+
+function CurrencyPlural(a_plugin,a_world)
   
 end
 
-function CurrencyPlural(a_world)
+function Format(a_plugin,a_world,a_value)
   
 end
 
-function Format(a_world,a_value)
+function GetPlayers(a_plugin,a_world)
+
+end
+
+function GetBanks(a_plugin,a_world)
   
 end
 
-function GetPlayers(a_world)
-
-end
-
-function GetBanks(a_world)
+function GetName(a_plugin,a_world)
   
 end
 
-function GetName(a_world)
+function HasBankSupport(a_plugin,a_world)
   
 end
 
-function HasBankSupport(a_world)
+function HasFractionalDigits(a_plugin,a_world)
   
 end
 
-function HasFractionalDigits(a_world)
-  
-end
-
-function IsEnabled(a_world)
+function IsEnabled(a_plugin,a_world)
   
 end
 
@@ -54,15 +62,15 @@ end
 
 --====================Player API Calls
 
-function PlayerBalance(a_player,a_world)
+function PlayerBalance(a_plugin,a_player,a_world)
   
 end
 
-function PlayerDeposit(a_player,a_world,a_value)
+function PlayerDeposit(a_plugin,a_player,a_world,a_value)
   
 end
 
-function PlayerWithdraw(a_player,a_world,a_value)
+function PlayerWithdraw(a_plugin,a_player,a_world,a_value)
   
 end
 
@@ -70,35 +78,35 @@ end
 
 --====================Bank API Calls
 
-function BankBalance(a_bank,a_player,a_world)
+function BankBalance(a_plugin,a_bank,a_player,a_world)
   
 end
 
-function BankDeposit(a_bank,a_player,a_world,a_value)
+function BankDeposit(a_plugin,a_bank,a_player,a_world,a_value)
   
 end
 
-function BankHasMember(a_bank,a_player,a_world,a_value)
+function BankHasMember(a_plugin,a_bank,a_player,a_world,a_value)
   
 end
 
-function BankMembers(a_bank,a_world)
+function BankMembers(a_plugin,a_bank,a_world)
   
 end
 
-function BankOwner(a_bank,a_world)
+function BankOwner(a_plugin,a_bank,a_world)
   
 end
 
-function BanksWithMember(a_player,a_world)
+function BanksWithMember(a_plugin,a_player,a_world)
   
 end
 
-function BankWithdraw(a_bank,a_player,a_world,a_value)
+function BankWithdraw(a_plugin,a_bank,a_player,a_world,a_value)
   
 end
 
-function BanksWithPlayer(a_player,a_world)
+function BanksWithPlayer(a_plugin,a_player,a_world)
   
 end
 
