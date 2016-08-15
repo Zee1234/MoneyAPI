@@ -14,7 +14,7 @@ function Initialize(a_Plugin)
   end
   
   
-  cRoot:Get():ForEachWorld(function(a_world) if not g_Worlds[a_world:GetName()] then g_Worlds[a_world:GetName()] = cMyWorld:new(a_world:GetName()) end end)
+  cRoot:Get():ForEachWorld(function(a_world) local name = a_world:GetName() if not g_Worlds[name] then g_Worlds[name] = cMyWorld:new(name) end end)
   if g_Config.UseWorldRestrictions then
     for _,v in pairs(g_Config.WorldRestrictions) do
       if type(v) == "table" then
@@ -26,8 +26,6 @@ function Initialize(a_Plugin)
       end
     end
   end
-  
-  
   
 	
   g_Plugin = a_Plugin
