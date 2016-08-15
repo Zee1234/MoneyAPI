@@ -3,8 +3,11 @@ Config:
 # If the program is breaking after you alter this file,
 # try to copy the formatting of the example file https://github.com/Zee1234/MoneyAPI/blob/master/config.zpsi
 
+
 # Restrict currency (provider) plugins to specific worlds?
--UseWorldRestrictions: True
+# These may override Usage Restrictions!
+# It is recommended to use only one currency plugin and leave this False
+-UseWorldRestrictions: False
 
 # This is the list of world based restrictions.
 # While you can list a single world multiple times, you probably shouldn't.
@@ -16,12 +19,10 @@ Config:
 ---: WorldB
 ---: WorldC
 
-# This should be "True" if you want the plugins listed above
-# to be the only plugins that work in their corresponding worlds. "False" otherwise.
--StrictWorlds: True
 
-
-# Force store (user) plugins to use specific providers? These override World Restrictions!
+# Force store (user) plugins to use specific providers?
+# These may override World Restrictions!
+# It is recommended to use only one currency plugin and leave this False
 -UseForcedRelations: False
 
 # This list of forced usages.
