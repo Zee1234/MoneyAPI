@@ -7,6 +7,7 @@ function providerCaller(a_user,a_world,a_function,...)
       repeat
         if not g_Providers[v] then LOGERROR("Configured Provider \""..v.."\" is not registered! Please fix MoneyAPI's Config or enable the missing provider!") break end
         if called[v] then break end
+        
         local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
         table.insert(returned,ret)
         called[v] = ret
@@ -19,6 +20,7 @@ function providerCaller(a_user,a_world,a_function,...)
       repeat
         if not g_Providers[v] then LOGERROR("Configured Provider \""..v.."\" is not registered! Please fix MoneyAPI's Config or enable the missing provider!") break end
         if called[v] then break end
+        
         local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
         table.insert(returned,ret)
         called[v] = ret
@@ -30,6 +32,7 @@ function providerCaller(a_user,a_world,a_function,...)
     for _,v in pairs(g_Providers) do
       repeat
         if called[v] then break end
+        
         local ret = cPluginManager:CallPlugin(v,"MoneyAPIProviderCallback",a_function,...)
         table.insert(returned,ret)
         called[v] = ret
