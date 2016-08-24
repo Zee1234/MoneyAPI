@@ -3,7 +3,7 @@ function Initialize(a_Plugin)
   a_Plugin:SetVersion(1.0)
   
   if not cPluginManager:ForEachPlugin(function(a_plugin)
-      if a_plugin:GetName() == LibDependHandle then return true end
+      if a_plugin:GetName() == "LibDependHandler" then return true end
     end
   )
   then
