@@ -11,7 +11,7 @@ Config:
 
 # This is the list of world based restrictions.
 # While you can list a single world multiple times, you probably shouldn't.
-# Be careful to avoid having this conflict with other mods' configs!
+# Be careful to avoid having this conflict with other plugins' configs!
 # Either of the following two formats works
 -WorldRestrictions:
 --ProviderPluginA: WorldA
